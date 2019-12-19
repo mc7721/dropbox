@@ -1,0 +1,356 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "Dropbox Content API v1",
+        "description": "The Dropbox Content API* is a part of Dropbox Core API with a separate end-point for file content management operations.",
+        "termsOfService": "https:\/\/www.dropbox.com\/developers\/reference\/tos"
+    },
+    "servers": [
+        "httpsapi-content.dropbox.com\/1"
+    ],
+    "paths": {
+        "\/files\/{root}\/{path}": {
+            "get": {
+                "summary": "Downloads a file.",
+                "description": "Downloads a file.\n\nThis method also supports [HTTP Range Retrieval Requests](http:\/\/www.w3.org\/Protocols\/rfc2616\/rfc2616-sec14.html#sec14.35.2)\nto allow retrieving partial file contents.\n",
+                "operationId": "DownloadsAFilethisMethodAlsoSupportsHttpRangeRetrievalRequestshttpwwww3orgprotocolsrfc2616r",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "path",
+                        "description": "Root folder: `auto` - automatically determines the appropriate root folder using your app's permission\nlevel (recommended); `sandbox` - the codename for app folder level; `dropbox` - full dropbox access.\n"
+                    },
+                    {
+                        "name": "path",
+                        "in": "path",
+                        "description": "The path to the file you want to retrieve."
+                    },
+                    {
+                        "name": "rev",
+                        "in": "query",
+                        "description": "The revision of the file to retrieve. This defaults to the most recent revision."
+                    }
+                ]
+            }
+        },
+        "\/files_put\/{root}\/{path}": {
+            "post": {
+                "summary": "Uploads a file using PUT semantics.",
+                "description": "Uploads a file using PUT semantics.\n\nThe preferred HTTP method for this call is **PUT**. For compatibility with browser environments, the **POST**\nHTTP method is also recognized.\n\n**Note:** Providing a `Content-Length` header set to the size of the uploaded file is required so that the\nserver can verify that it has received the entire file contents.\n\n**Note:** `\/files_put` has a maximum file size limit of 150 MB and does not support uploads with chunked\nencoding. To upload larger files, use [\/ch",
+                "operationId": "UploadsAFileUsingPutSemanticsthePreferredHttpMethodForThisCallIsPutForCompatibilityW",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "path",
+                        "description": "Root folder: `auto` - automatically determines the appropriate root folder using your app's permission\nlevel (recommended); `sandbox` - the codename for app folder level; `dropbox` - full dropbox access.\n"
+                    },
+                    {
+                        "name": "path",
+                        "in": "path",
+                        "description": "The path to the file you want to retrieve."
+                    },
+                    {
+                        "name": "locale",
+                        "in": "query",
+                        "description": "The metadata returned on successful upload will have its `size` field translated based on the given locale."
+                    },
+                    {
+                        "name": "overwrite",
+                        "in": "query",
+                        "description": "This value, either `true` (default) or `false`, determines whether an existing file will be overwritten\nby this upload. If `true`, any existing file will be overwritten. If `false`, the other parameters\ndetermine whether a conflict occurs and how that conflict is resolved.\n"
+                    },
+                    {
+                        "name": "parent_rev",
+                        "in": "query",
+                        "description": "If present, this parameter specifies the revision of the file you're editing. If `parent_rev` matches the\nlatest version of the file on the user's Dropbox, that file will be replaced. Otherwise, a conflict will\noccur. If you specify a `parent_rev` and that revision doesn't exist, the file won't save (error 400).\nYou can get the most recent rev by performing a call to [\/metadata](https:\/\/www.dropbox.com\/developers\/core\/docs#metadata).\n"
+                    },
+                    {
+                        "name": "autorename",
+                        "in": "query",
+                        "description": "This value, either `true` (default) or `false`, determines what happens when there is a conflict. If `true`,\nthe file being uploaded will be automatically renamed to avoid the conflict. (For example, `test.txt` might\nbe automatically renamed to `test (1).txt`.) The new name can be obtained from the returned metadata.\nIf `false`, the call will fail with a 409 (Conflict) response code.\n"
+                    },
+                    {
+                        "name": "file_content",
+                        "in": "body",
+                        "description": "The file contents to be uploaded. Since the entire `PUT` body will be treated as the file, any parameters\nmust be passed as part of the request URL. The request URL should be signed just as you would sign any\nother OAuth request URL.\n"
+                    }
+                ]
+            },
+            "put": {
+                "summary": "Uploads a file using PUT semantics.",
+                "description": "Uploads a file using PUT semantics.\n\nThe preferred HTTP method for this call is **PUT**. For compatibility with browser environments, the **POST**\nHTTP method is also recognized.\n\n**Note:** Providing a `Content-Length` header set to the size of the uploaded file is required so that the\nserver can verify that it has received the entire file contents.\n\n**Note:** `\/files_put` has a maximum file size limit of 150 MB and does not support uploads with chunked\nencoding. To upload larger files, use [\/ch",
+                "operationId": "UploadsAFileUsingPutSemanticsthePreferredHttpMethodForThisCallIsPutForCompatibilityW",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "path",
+                        "description": "Root folder: `auto` - automatically determines the appropriate root folder using your app's permission\nlevel (recommended); `sandbox` - the codename for app folder level; `dropbox` - full dropbox access.\n"
+                    },
+                    {
+                        "name": "path",
+                        "in": "path",
+                        "description": "The path to the file you want to retrieve."
+                    },
+                    {
+                        "name": "locale",
+                        "in": "query",
+                        "description": "The metadata returned on successful upload will have its `size` field translated based on the given locale."
+                    },
+                    {
+                        "name": "overwrite",
+                        "in": "query",
+                        "description": "This value, either `true` (default) or `false`, determines whether an existing file will be overwritten\nby this upload. If `true`, any existing file will be overwritten. If `false`, the other parameters\ndetermine whether a conflict occurs and how that conflict is resolved.\n"
+                    },
+                    {
+                        "name": "parent_rev",
+                        "in": "query",
+                        "description": "If present, this parameter specifies the revision of the file you're editing. If `parent_rev` matches the\nlatest version of the file on the user's Dropbox, that file will be replaced. Otherwise, a conflict will\noccur. If you specify a `parent_rev` and that revision doesn't exist, the file won't save (error 400).\nYou can get the most recent rev by performing a call to [\/metadata](https:\/\/www.dropbox.com\/developers\/core\/docs#metadata).\n"
+                    },
+                    {
+                        "name": "autorename",
+                        "in": "query",
+                        "description": "This value, either `true` (default) or `false`, determines what happens when there is a conflict. If `true`,\nthe file being uploaded will be automatically renamed to avoid the conflict. (For example, `test.txt` might\nbe automatically renamed to `test (1).txt`.) The new name can be obtained from the returned metadata.\nIf `false`, the call will fail with a 409 (Conflict) response code.\n"
+                    },
+                    {
+                        "name": "file_content",
+                        "in": "body",
+                        "description": "The file contents to be uploaded. Since the entire `PUT` body will be treated as the file, any parameters\nmust be passed as part of the request URL. The request URL should be signed just as you would sign any\nother OAuth request URL.\n"
+                    }
+                ]
+            }
+        },
+        "\/thumbnails\/{root}\/{path}": {
+            "get": {
+                "summary": "Gets a thumbnail for an image.",
+                "description": "Gets a thumbnail for an image.\n\nThis method currently supports files with the following file extensions: .jpg, .jpeg, .png, .tiff, .tif, .gif, .bmp\n\nPhotos that are larger than 20MB in size won't be converted to a thumbnail.\n",
+                "operationId": "GetsAThumbnailForAnImagethisMethodCurrentlySupportsFilesWithTheFollowingFileExtensions",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "path",
+                        "description": "Root folder: `auto` - automatically determines the appropriate root folder using your app's permission\nlevel (recommended); `sandbox` - the codename for app folder level; `dropbox` - full dropbox access.\n"
+                    },
+                    {
+                        "name": "path",
+                        "in": "path",
+                        "description": "The path to the file you want to retrieve."
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "description": "For images that are photos, `jpeg` (default) should be preferred, while `png` is better for screenshots and digital art.\n"
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "Default size is `s`. Sizes in pixels are `xs` - 32x32, `s` - 64x64, `m` - 128x128, `l` - 640x480, `xl` - 1024x768"
+                    }
+                ]
+            }
+        },
+        "\/previews\/{root}\/{path}": {
+            "get": {
+                "summary": "Gets a preview for a file.",
+                "description": "Gets a preview for a file.\n\nPreviews are only generated for the files with the following extensions: .doc, .docx, .docm, .ppt, .pps,\n.ppsx, .ppsm, .pptx, .pptm, .xls, .xlsx, .xlsm, .rtf\n",
+                "operationId": "GetsAPreviewForAFilepreviewsAreOnlyGeneratedForTheFilesWithTheFollowingExtensionsDoc",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "path",
+                        "description": "Root folder: `auto` - automatically determines the appropriate root folder using your app's permission\nlevel (recommended); `sandbox` - the codename for app folder level; `dropbox` - full dropbox access.\n"
+                    },
+                    {
+                        "name": "path",
+                        "in": "path",
+                        "description": "The path to the file you want to retrieve."
+                    },
+                    {
+                        "name": "rev",
+                        "in": "query",
+                        "description": "The revision of the file to retrieve. This defaults to the most recent revision."
+                    }
+                ]
+            }
+        },
+        "\/chunked_upload": {
+            "put": {
+                "summary": "Uploads large files to Dropbox in multiple chunks.",
+                "description": "Uploads large files to Dropbox in multiple chunks. Also has the ability to resume if the upload is interrupted.\nThis allows for uploads larger than the `\/files_put` maximum of 150 MB.\n\nTypical usage:\n  1. Send a PUT request to `\/chunked_upload` with the first chunk of the file without setting `upload_id`, and\n  receive an `upload_id` in return.\n  2. Repeatedly `PUT` subsequent chunks using the `upload_id` to identify the upload in progress and an `offset`\n  representing the number of bytes trans",
+                "operationId": "UploadsLargeFilesToDropboxInMultipleChunksAlsoHasTheAbilityToResumeIfTheUploadIsIn",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "upload_id",
+                        "in": "query",
+                        "description": "The unique ID of the in-progress upload on the server. If left blank, the server will create a new\nupload session.\n"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The byte offset of this chunk, relative to the beginning of the full file. The server will verify that\nthis matches the offset it expects. If it does not, the server will return an error with the expected\noffset.\n"
+                    },
+                    {
+                        "name": "file_content",
+                        "in": "body",
+                        "description": "The file contents to be uploaded. Since the entire `PUT` body will be treated as the file, any parameters\nmust be passed as part of the request URL. The request URL should be signed just as you would sign any\nother OAuth request URL.\n"
+                    }
+                ]
+            }
+        },
+        "\/commit_chunked_upload\/{root}\/{path}": {
+            "post": {
+                "summary": "Completes an upload initiated by the chunked upload method.",
+                "description": "Completes an upload initiated by the `\/chunked_upload` method. Saves a file uploaded via `\/chunked_upload` to\na user's Dropbox.\n\n`\/commit_chunked_upload` is similar to `\/files_put`. The main difference is that while `\/files_put` takes the\nfile contents in the request body, `\/commit_chunked_upload` takes a parameter `upload_id`, which is obtained\nwhen the file contents are uploaded via `\/chunked_upload`.\n",
+                "operationId": "CompletesAnUploadInitiatedByTheChunkedUploadMethodSavesAFileUploadedViaChunkedUpload",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "path",
+                        "description": "Root folder: `auto` - automatically determines the appropriate root folder using your app's permission\nlevel (recommended); `sandbox` - the codename for app folder level; `dropbox` - full dropbox access.\n"
+                    },
+                    {
+                        "name": "path",
+                        "in": "path",
+                        "description": "The path to the file you want to retrieve."
+                    },
+                    {
+                        "name": "locale",
+                        "in": "query",
+                        "description": "The metadata returned on successful upload will have its `size` field translated based on the given locale."
+                    },
+                    {
+                        "name": "overwrite",
+                        "in": "query",
+                        "description": "This value, either `true` (default) or `false`, determines whether an existing file will be overwritten\nby this upload. If `true`, any existing file will be overwritten. If `false`, the other parameters\ndetermine whether a conflict occurs and how that conflict is resolved.\n"
+                    },
+                    {
+                        "name": "parent_rev",
+                        "in": "query",
+                        "description": "If present, this parameter specifies the revision of the file you're editing. If `parent_rev` matches the\nlatest version of the file on the user's Dropbox, that file will be replaced. Otherwise, a conflict will\noccur. If you specify a `parent_rev` and that revision doesn't exist, the file won't save (error 400).\nYou can get the most recent rev by performing a call to [\/metadata](https:\/\/www.dropbox.com\/developers\/core\/docs#metadata).\n"
+                    },
+                    {
+                        "name": "autorename",
+                        "in": "query",
+                        "description": "This value, either `true` (default) or `false`, determines what happens when there is a conflict. If `true`,\nthe file being uploaded will be automatically renamed to avoid the conflict. (For example, `test.txt` might\nbe automatically renamed to `test (1).txt`.) The new name can be obtained from the returned metadata.\nIf `false`, the call will fail with a 409 (Conflict) response code.\n"
+                    },
+                    {
+                        "name": "upload_id",
+                        "in": "query",
+                        "description": "The unique ID of the in-progress upload on the server. If left blank, the server will create a new\nupload session.\n"
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ErrorMessage": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "FileMetadata": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "bytes": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "path": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "is_dir": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "is_deleted": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "rev": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "thumb_exists": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "icon": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "mime_type": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "modified": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "root": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "revision": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "ChunkedUploadInfo": {
+                "type": "object",
+                "properties": {
+                    "upload_id": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "offset": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "expires": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            },
+            "ChunkedUploadError": {
+                "type": "object",
+                "properties": {
+                    "upload_id": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "offset": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "expires": {
+                        "description": "",
+                        "type": "post"
+                    },
+                    "error": {
+                        "description": "",
+                        "type": "post"
+                    }
+                }
+            }
+        }
+    }
+}
