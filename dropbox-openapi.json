@@ -1,0 +1,16 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1",
+        "title": "Dropbox",
+        "description": "The Dropbox API allows you to build the power of Dropbox directly into your app.",
+        "termsOfService": ""
+    },
+    "servers": [
+        "httpsapi.dropbox.com\/1"
+    ],
+    "paths": [],
+    "components": {
+        "schemas": []
+    }
+}
