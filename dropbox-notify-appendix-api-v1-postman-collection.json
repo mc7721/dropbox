@@ -1,0 +1,51 @@
+{
+    "id": "efface0adf4f1c961666bbd73b3a61e1",
+    "name": "Dropbox Notify Appendix API v1",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "dcfd132d1dc137461099cf38ec0b9730",
+            "name": "A long-poll endpoint to wait for changes on an account.",
+            "url": "httpsapi-notify.dropbox.com\/1\/longpoll_delta",
+            "description": "A long-poll endpoint to wait for changes on an account. In conjunction with [\/delta](https:\/\/www.dropbox.com\/developers\/core\/docs#delta),\nthis call gives you a low-latency way to monitor an account for file changes.\n\nNote that this call goes to **api-notify.dropbox.com** instead of *api.dropbox.com*.\n\nUnlike most other API endpoints, this call does not require OAuth authentication. The passed in `cursor` can\nonly be acquired via an authenticated call to [\/delta](https:\/\/www.dropbox.com\/developer",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "cursor",
+                    "description": "A delta cursor as returned from a call to [\/delta](https:\/\/www.dropbox.com\/developers\/core\/docs#delta).\nNote that a `cursor` returned from a call to [\/delta](https:\/\/www.dropbox.com\/developers\/core\/docs#delta)\nwith `include_media_info=true` is incompatible with `\/longpoll_delta` and an error will be returned.\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "timeout",
+                    "description": "An optional integer indicating a timeout, in seconds. The default value is 30 seconds, which is also the\nminimum allowed value. The maximum is 480 seconds. The request will block for at most this length of time,\nplus up to 90 seconds of random jitter added to avoid the [thundering herd problem](https:\/\/en.wikipedia.org\/wiki\/Thundering_herd_problem).\nCare should be taken when using this parameter, as some network infrastructure does not support long\ntimeouts.\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "efface0adf4f1c961666bbd73b3a61e1",
+            "rawModeData": ""
+        }
+    ]
+}
