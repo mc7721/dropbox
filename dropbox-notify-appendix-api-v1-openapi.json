@@ -1,0 +1,60 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "Dropbox Notify Appendix API v1",
+        "description": "The Dropbox Notify  is a part of [Dropbox Core AP with a separate end-point for notification call.",
+        "termsOfService": "https:\/\/www.dropbox.com\/developers\/reference\/tos"
+    },
+    "servers": [
+        "httpsapi-notify.dropbox.com\/1"
+    ],
+    "paths": {
+        "\/longpoll_delta": {
+            "get": {
+                "summary": "A long-poll endpoint to wait for changes on an account.",
+                "description": "A long-poll endpoint to wait for changes on an account. In conjunction with [\/delta](https:\/\/www.dropbox.com\/developers\/core\/docs#delta),\nthis call gives you a low-latency way to monitor an account for file changes.\n\nNote that this call goes to **api-notify.dropbox.com** instead of *api.dropbox.com*.\n\nUnlike most other API endpoints, this call does not require OAuth authentication. The passed in `cursor` can\nonly be acquired via an authenticated call to [\/delta](https:\/\/www.dropbox.com\/developer",
+                "operationId": "ALongpollEndpointToWaitForChangesOnAnAccountInConjunctionWithDeltahttpswwwdropboxcomdev",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "A delta cursor as returned from a call to [\/delta](https:\/\/www.dropbox.com\/developers\/core\/docs#delta).\nNote that a `cursor` returned from a call to [\/delta](https:\/\/www.dropbox.com\/developers\/core\/docs#delta)\nwith `include_media_info=true` is incompatible with `\/longpoll_delta` and an error will be returned.\n"
+                    },
+                    {
+                        "name": "timeout",
+                        "in": "query",
+                        "description": "An optional integer indicating a timeout, in seconds. The default value is 30 seconds, which is also the\nminimum allowed value. The maximum is 480 seconds. The request will block for at most this length of time,\nplus up to 90 seconds of random jitter added to avoid the [thundering herd problem](https:\/\/en.wikipedia.org\/wiki\/Thundering_herd_problem).\nCare should be taken when using this parameter, as some network infrastructure does not support long\ntimeouts.\n"
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ErrorMessage": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "LongPollResult": {
+                "type": "object",
+                "properties": {
+                    "changes": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "backoff": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            }
+        }
+    }
+}
