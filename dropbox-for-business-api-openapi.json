@@ -1,0 +1,16 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1",
+        "title": "Dropbox for Business API",
+        "description": "The business version of the Dropbox API.",
+        "termsOfService": ""
+    },
+    "servers": [
+        "httpsapi.dropbox.com\/1\/team"
+    ],
+    "paths": [],
+    "components": {
+        "schemas": []
+    }
+}
