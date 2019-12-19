@@ -1,0 +1,242 @@
+{
+    "name": "Dropbox",
+    "description": "Dropbox is a modern workspace designed to reduce busywork-so you can focus on the things that matter. Sign in and put your creative energy to work.",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/pull_image_10-12-2019-02-14-pm.png",
+    "tags": [
+        "api lifeycle",
+        "api provider",
+        "api service provider",
+        "file storage",
+        "have api",
+        "have swagger",
+        "profile",
+        "relative data",
+        "service api",
+        "sharing",
+        "storage",
+        "webhook implementations"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/dropbox\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Dropbox",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/pull_image_10-12-2019-02-14-pm.png",
+            "humanURL": "http:\/\/dropbox.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/dropbox-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/dropbox.json"
+                }
+            ]
+        },
+        {
+            "name": "Dropbox for Business API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/pull_image_10-12-2019-02-14-pm.png",
+            "humanURL": "http:\/\/dropbox.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/dropbox-for-business-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/dropbox-for-business-api.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/dropbox-for-business-api-postman-collection.json"
+                }
+            ]
+        },
+        {
+            "name": "Dropbox Core API v1",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/pull_image_10-12-2019-02-14-pm.png",
+            "humanURL": "http:\/\/dropbox.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/dropbox-core-api-v1-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/dropbox-core-api-v1.json"
+                }
+            ]
+        },
+        {
+            "name": "Dropbox Content API v1",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/pull_image_10-12-2019-02-14-pm.png",
+            "humanURL": "http:\/\/dropbox.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/dropbox-content-api-v1-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/dropbox-content-api-v1.json"
+                }
+            ]
+        },
+        {
+            "name": "Dropbox Notify Appendix API v1",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/pull_image_10-12-2019-02-14-pm.png",
+            "humanURL": "http:\/\/dropbox.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/dropbox-notify-appendix-api-v1-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/dropbox-notify-appendix-api-v1.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Application Management",
+            "url": "https:\/\/www.dropbox.com\/developers\/apps"
+        },
+        {
+            "type": "Base",
+            "url": "https:\/\/api.dropbox.com\/"
+        },
+        {
+            "type": "Blog",
+            "url": "https:\/\/blog.dropbox.com\/"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "https:\/\/blog.dropbox.com\/feed\/"
+        },
+        {
+            "type": "Branding",
+            "url": "https:\/\/www.dropbox.com\/developers\/reference\/branding"
+        },
+        {
+            "type": "Branding",
+            "url": "https:\/\/www.dropbox.com\/branding"
+        },
+        {
+            "type": "Contact Form",
+            "url": "https:\/\/www.dropbox.com\/developers\/contact"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "http:\/\/www.crunchbase.com\/company\/dropbox"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/dropbox"
+        },
+        {
+            "type": "Developers",
+            "url": "https:\/\/www.dropbox.com\/developers"
+        },
+        {
+            "type": "Email",
+            "url": "privacyshield@dropbox.com"
+        },
+        {
+            "type": "Email",
+            "url": "privacy@dropbox.com"
+        },
+        {
+            "type": "Email",
+            "url": "contractnotices@dropbox.com"
+        },
+        {
+            "type": "Email",
+            "url": "copyright@dropbox.com"
+        },
+        {
+            "type": "Email",
+            "url": "dispute-notice@dropbox.com"
+        },
+        {
+            "type": "FAQ",
+            "url": "https:\/\/www.dropbox.com\/developers\/support"
+        },
+        {
+            "type": "Forums",
+            "url": "https:\/\/www.dropboxforum.com\/hc\/communities\/public\/topics\/200209245-API-Development"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/dropbox"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/184-2019-09-03-14-50-51.json"
+        },
+        {
+            "type": "Pricing",
+            "url": "https:\/\/www.dropbox.com\/plans"
+        },
+        {
+            "type": "Privacy",
+            "url": "https:\/\/www.dropbox.com\/privacy"
+        },
+        {
+            "type": "Stack Overflow",
+            "url": "http:\/\/stackoverflow.com\/questions\/tagged\/dropbox-api?sort=votes&pagesize=15"
+        },
+        {
+            "type": "Support",
+            "url": "https:\/\/www.dropbox.com\/help"
+        },
+        {
+            "type": "Terms Of Service",
+            "url": "https:\/\/www.dropbox.com\/privacy#terms"
+        },
+        {
+            "type": "Transparency Report",
+            "url": "https:\/\/www.dropbox.com\/transparency"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/dropbox"
+        },
+        {
+            "type": "Webhooks",
+            "url": "https:\/\/www.dropbox.com\/developers\/reference\/webhooks"
+        },
+        {
+            "type": "Webhooks",
+            "url": "https:\/\/www.dropbox.com\/developers\/webhooks\/docs"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/dropbox.com"
+        },
+        {
+            "type": "Website",
+            "url": "https:\/\/www.dropbox.com"
+        }
+    ]
+}
