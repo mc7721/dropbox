@@ -1,0 +1,1420 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Dropbox Core API v1",
+        "description": "The Dropbox **Core API** is the underlying interface for all of our official [Dropbox mobile apps](https:\/\/www.dropbox.com\/mobile)\nand our [SDKs](https:\/\/www.dropbox.com\/developers\/core\/sdk). It's the most direct way to access the API. This\nreference document is designed for those interested in developing for platforms not supported by the SDKs or for\nthose interested in exploring API features in detail.\n\nPlease refer to official Dropbox [developers documentation](https:\/\/www.dropbox.com\/developers-v1\/core\/docs) for any\nadditional remarks.\n\nPlease note:\n  * `https:\/\/api-content.dropbox.com` end-point is covered by Dropbox Content API document (see `dropbox-content.yaml`)\n  * `https:\/\/api-notify.dropbox.com` end-point is covered by Dropbox Notify Appendix document (see `dropbox-notify.yaml`)\n\n**OAuth note:** if you wish to try HTTP request directly from Swagger UI you have to authorize agains\n\"Swagger UI Test App\". This application is configured with following redirect URI:\n  * `http:\/\/",
+        "termsOfService": "https:\/\/www.dropbox.com\/developers\/reference\/tos"
+    },
+    "servers": [
+        "http:\/\/api.dropbox.com\/1"
+    ],
+    "paths": {
+        "\/oauth2\/token_from_oauth1": {
+            "post": {
+                "summary": "Convert OAuth 1 token to OAuth 2 token.",
+                "description": "This endpoint should be used by apps transitioning from OAuth 1 to OAuth 2. It will return an OAuth 2 token\nfor the authenticated user.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/disable_access_token": {
+            "post": {
+                "summary": "Disables the access token.",
+                "description": "Disables the access token used to authenticate the call. This method works for OAuth 1 and OAuth 2 tokens.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/account\/info": {
+            "get": {
+                "summary": "Retrieves information about the user's account.",
+                "description": "Retrieves information about the user's account.",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "query",
+                        "description": "Use to specify language settings for user error messages and other language specific text. See the\n[locale notes](https:\/\/www.dropbox.com\/developers\/core\/docs#param.locale) for more information about\nsupported locales.\n"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/metadata\/{root}\/{path}": {
+            "get": {
+                "summary": "Retrieves file and folder metadata.",
+                "description": "Retrieves file and folder metadata.\n\n**Note:** `modified`, `rev`, and `revision` aren't returned in the metadata for the root\/top-level path.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "path",
+                        "description": "Root folder: `auto` - automatically determines the appropriate root folder using your app's permission\nlevel (recommended); `sandbox` - the codename for app folder level; `dropbox` - full dropbox access.\n"
+                    },
+                    {
+                        "name": "path",
+                        "in": "path",
+                        "description": "The path to the file or folder."
+                    },
+                    {
+                        "name": "file_limit",
+                        "in": "query",
+                        "description": "Default is 10,000 (max is 25,000). When listing a folder, the service won't report listings containing\nmore than the specified amount of files and will instead respond with a 406 (Not Acceptable) status response.\n"
+                    },
+                    {
+                        "name": "hash",
+                        "in": "query",
+                        "description": "Each call to `\/metadata` on a folder will return a `hash` field, generated by hashing all of the metadata\ncontained in that response. On later calls to `\/metadata`, you should provide that value via this\nparameter so that if nothing has changed, the response will be a 304 (Not Modified) status code instead\nof the full, potentially very large, folder listing. This parameter is ignored if the specified path is\nassociated with a file or if `list=false`.\n"
+                    },
+                    {
+                        "name": "list",
+                        "in": "query",
+                        "description": "The strings `true` and `false` are valid values. `true` is the default. If `true`, the folder's metadata will\ninclude a contents field with a list of metadata entries for the contents of the folder. If `false`, the\ncontents field will be omitted.\n"
+                    },
+                    {
+                        "name": "include_deleted",
+                        "in": "query",
+                        "description": "Only applicable when `list` is set. If this parameter is set to `true`, then contents will include the\nmetadata of deleted children. Note that the target of the metadata call is always returned even when it\nhas been deleted (with `is_deleted` set to `true`) regardless of this flag.\n"
+                    },
+                    {
+                        "name": "rev",
+                        "in": "query",
+                        "description": "If you include a particular revision number, then only the metadata for that revision will be returned.\n"
+                    },
+                    {
+                        "name": "locale",
+                        "in": "query",
+                        "description": "Use to specify language settings for user error messages and other language specific text. See the\n[locale notes](https:\/\/www.dropbox.com\/developers\/core\/docs#param.locale) for more information about\nsupported locales.\n"
+                    },
+                    {
+                        "name": "include_media_info",
+                        "in": "query",
+                        "description": "If `true`, each file will include a `photo_info` dictionary for photos and a `video_info` dictionary\nfor videos with additional media info. If the data isn't available yet, the string `pending` will be\nreturned instead of a dictionary.\n"
+                    },
+                    {
+                        "name": "include_membership",
+                        "in": "query",
+                        "description": "If `true`, metadata for a shared folder will include a list of members and a list of groups."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/delta": {
+            "post": {
+                "summary": "A way of letting you keep up with changes to files and folders in a user's Dropbox.",
+                "description": "A way of letting you keep up with changes to files and folders in a user's Dropbox.\n\nYou can periodically call `\/delta` to get a list of \"delta entries\", which are instructions on how to\nupdate your local state to match the server's state.\n\nIf you use the `path_prefix` parameter, you must continue to pass the correct prefix on subsequent calls\nusing the returned cursor. You can switch the `path_prefix` on any existing cursor to a descendant of the\nexisting `path_prefix` on subsequent calls to `\/",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "cursor",
+                        "in": "formData",
+                        "description": "A string that is used to keep track of your current state. On the next call pass in this value to return\ndelta entries that have been recorded since the cursor was returned.\n"
+                    },
+                    {
+                        "name": "locale",
+                        "in": "formData",
+                        "description": "The metadata returned will have its `size` field translated based on the given `locale`. For more\ninformation see [locale notes](https:\/\/www.dropbox.com\/developers\/core\/docs#param.locale).\n"
+                    },
+                    {
+                        "name": "path_prefix",
+                        "in": "formData",
+                        "description": "If present, this parameter filters the response to only include entries at or under the specified path.\nFor example, a `path_prefix` of \"\/Photos\/Vacation\" will return entries for the path \"\/Photos\/Vacation\"\nand any files and folders under that path.\n"
+                    },
+                    {
+                        "name": "include_media_info",
+                        "in": "formData",
+                        "description": "If `true`, each file will include a `photo_info` dictionary for photos and a `video_info` dictionary for\nvideos with additional media info.\n"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/delta\/latest_cursor": {
+            "post": {
+                "summary": "A way to quickly get a cursor for the server's state, for use with \/delta.",
+                "description": "A way to quickly get a cursor for the server's state, for use with `\/delta`.\n\nUnlike `\/delta`, `\/delta\/latest_cursor` does not return any entries, so your app will not know about any\nexisting files or folders in the Dropbox account. For example, if your app processes future delta entries\nand sees that a folder was deleted, your app won't know what files were in that folder. Use this endpoint\nif your app only needs to know about new files and modifications and doesn't need to know about files tha",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "path_prefix",
+                        "in": "formData",
+                        "description": "If present, this parameter filters the response to only include entries at or under the specified path.\nFor example, a `path_prefix` of \"\/Photos\/Vacation\" will return entries for the path \"\/Photos\/Vacation\"\nand any files and folders under that path.\n"
+                    },
+                    {
+                        "name": "include_media_info",
+                        "in": "formData",
+                        "description": "If `true`, each file will include a `photo_info` dictionary for photos and a `video_info` dictionary for\nvideos with additional media info.\n"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/revisions\/{root}\/{path}": {
+            "get": {
+                "summary": "Obtains metadata for all available revisions of a file, including the current revision.",
+                "description": "Obtains metadata for all available revisions of a file, including the current revision.\n\nOnly revisions up to thirty days old are available (or more if the Dropbox user has\n[Extended Version History](https:\/\/www.dropbox.com\/help\/113)). You can use the revision number in conjunction\nwith the `\/restore` call to revert the file to its previous state.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "path",
+                        "description": "Root folder: `auto` - automatically determines the appropriate root folder using your app's permission\nlevel (recommended); `sandbox` - the codename for app folder level; `dropbox` - full dropbox access.\n"
+                    },
+                    {
+                        "name": "path",
+                        "in": "path",
+                        "description": "The path to the file or folder."
+                    },
+                    {
+                        "name": "rev_limit",
+                        "in": "query",
+                        "description": "Default is 10. Max is 1,000. Up to this number of recent revisions will be returned."
+                    },
+                    {
+                        "name": "locale",
+                        "in": "query",
+                        "description": "Use to specify language settings for user error messages and other language specific text. See the\n[locale notes](https:\/\/www.dropbox.com\/developers\/core\/docs#param.locale) for more information about\nsupported locales.\n"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/restore\/{root}\/{path}": {
+            "post": {
+                "summary": "Restores a file path to a previous revision.",
+                "description": "Restores a file path to a previous revision.\n\nUnlike downloading a file at a given revision and then re-uploading it, this call is atomic. It also saves\na bunch of bandwidth.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "path",
+                        "description": "Root folder: `auto` - automatically determines the appropriate root folder using your app's permission\nlevel (recommended); `sandbox` - the codename for app folder level; `dropbox` - full dropbox access.\n"
+                    },
+                    {
+                        "name": "path",
+                        "in": "path",
+                        "description": "The path to the file or folder."
+                    },
+                    {
+                        "name": "rev",
+                        "in": "formData",
+                        "description": "The revision of the file to restore."
+                    },
+                    {
+                        "name": "locale",
+                        "in": "formData",
+                        "description": "The metadata returned will have its `size` field translated based on the given `locale`. For more\ninformation see [locale notes](https:\/\/www.dropbox.com\/developers\/core\/docs#param.locale).\n"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/search\/{root}\/{path}": {
+            "get": {
+                "summary": "Search for files and folders by name.",
+                "description": "Returns metadata for all files and folders whose filename contains the given search string as a substring.\n\nSearches are limited to the folder path and its sub-folder hierarchy provided in the call.\n\n**Note:** Recent changes may not immediately be reflected in search results due to a short delay in indexing.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "path",
+                        "description": "Root folder: `auto` - automatically determines the appropriate root folder using your app's permission\nlevel (recommended); `sandbox` - the codename for app folder level; `dropbox` - full dropbox access.\n"
+                    },
+                    {
+                        "name": "path",
+                        "in": "path",
+                        "description": "The path to the file or folder."
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "The search string. This string is split (on spaces) into individual words. Files and folders will be\nreturned if they contain all words in the search string.\n"
+                    },
+                    {
+                        "name": "file_limit",
+                        "in": "query",
+                        "description": "Default is 10,000 (max is 25,000). When listing a folder, the service won't report listings containing\nmore than the specified amount of files and will instead respond with a 406 (Not Acceptable) status response.\n"
+                    },
+                    {
+                        "name": "include_deleted",
+                        "in": "query",
+                        "description": "Only applicable when `list` is set. If this parameter is set to `true`, then contents will include the\nmetadata of deleted children. Note that the target of the metadata call is always returned even when it\nhas been deleted (with `is_deleted` set to `true`) regardless of this flag.\n"
+                    },
+                    {
+                        "name": "locale",
+                        "in": "query",
+                        "description": "Use to specify language settings for user error messages and other language specific text. See the\n[locale notes](https:\/\/www.dropbox.com\/developers\/core\/docs#param.locale) for more information about\nsupported locales.\n"
+                    },
+                    {
+                        "name": "include_membership",
+                        "in": "query",
+                        "description": "If `true`, metadata for a shared folder will include a list of members and a list of groups."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Search for files and folders by name.",
+                "description": "Returns metadata for all files and folders whose filename contains the given search string as a substring.\n\nSearches are limited to the folder path and its sub-folder hierarchy provided in the call.\n\n**Note:** Recent changes may not immediately be reflected in search results due to a short delay in indexing.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "path",
+                        "description": "Root folder: `auto` - automatically determines the appropriate root folder using your app's permission\nlevel (recommended); `sandbox` - the codename for app folder level; `dropbox` - full dropbox access.\n"
+                    },
+                    {
+                        "name": "path",
+                        "in": "path",
+                        "description": "The path to the file or folder."
+                    },
+                    {
+                        "name": "query",
+                        "in": "formData",
+                        "description": "The search string. This string is split (on spaces) into individual words. Files and folders will be\nreturned if they contain all words in the search string.\n"
+                    },
+                    {
+                        "name": "file_limit",
+                        "in": "formData",
+                        "description": "The maximum and default value is 1,000. No more than `file_limit` search results will be returned."
+                    },
+                    {
+                        "name": "include_deleted",
+                        "in": "formData",
+                        "description": "If this parameter is set to `true`, then files and folders that have been deleted will also be included\nin the search.\n"
+                    },
+                    {
+                        "name": "locale",
+                        "in": "formData",
+                        "description": "The metadata returned will have its `size` field translated based on the given `locale`. For more\ninformation see [locale notes](https:\/\/www.dropbox.com\/developers\/core\/docs#param.locale).\n"
+                    },
+                    {
+                        "name": "include_membership",
+                        "in": "formData",
+                        "description": "If `true`, metadata for a shared folder will include a list of members and a list of groups."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/shares\/{root}\/{path}": {
+            "post": {
+                "summary": "Creates and returns a shared link to a file or folder.",
+                "description": "Creates and returns a [shared link](https:\/\/www.dropbox.com\/help\/167) to a file or folder.\n\nDropbox for Business users can set restrictions on shared links; the `visibility` field indicates what\n(if any) restrictions are set on this particular link. Possible values include:\n  * `PUBLIC` - anyone can view\n  * `TEAM_ONLY` - only the owner's team can view\n  * `PASSWORD` - a password is required\n  * `TEAM_AND_PASSWORD` - a combination of `TEAM_ONLY` and `PASSWORD` restrictions\n  * `SHARED_FOLDER_ONL",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "path",
+                        "description": "Root folder: `auto` - automatically determines the appropriate root folder using your app's permission\nlevel (recommended); `sandbox` - the codename for app folder level; `dropbox` - full dropbox access.\n"
+                    },
+                    {
+                        "name": "path",
+                        "in": "path",
+                        "description": "The path to the file or folder."
+                    },
+                    {
+                        "name": "locale",
+                        "in": "formData",
+                        "description": "The metadata returned will have its `size` field translated based on the given `locale`. For more\ninformation see [locale notes](https:\/\/www.dropbox.com\/developers\/core\/docs#param.locale).\n"
+                    },
+                    {
+                        "name": "short_url",
+                        "in": "formData",
+                        "description": "When `true` (default), the URL returned will be shortened using the Dropbox URL shortener. If `false`,\nthe URL will link directly to the file's preview page.\n"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/media\/{root}\/{path}": {
+            "post": {
+                "summary": "Returns a link directly to a file.",
+                "description": "Returns a link directly to a file.\n\nSimilar to [\/shares](https:\/\/www.dropbox.com\/developers\/core\/docs#shares). The difference is that this\nbypasses the Dropbox webserver, used to provide a preview of the file, so that you can effectively stream\nthe contents of your media. This URL should not be used to display content directly in the browser.\n\nThe `\/media` link expires after four hours, allotting enough time to stream files, but not enough to leave\na connection open indefinitely.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "path",
+                        "description": "Root folder: `auto` - automatically determines the appropriate root folder using your app's permission\nlevel (recommended); `sandbox` - the codename for app folder level; `dropbox` - full dropbox access.\n"
+                    },
+                    {
+                        "name": "path",
+                        "in": "path",
+                        "description": "The path to the file or folder."
+                    },
+                    {
+                        "name": "locale",
+                        "in": "formData",
+                        "description": "The metadata returned will have its `size` field translated based on the given `locale`. For more\ninformation see [locale notes](https:\/\/www.dropbox.com\/developers\/core\/docs#param.locale).\n"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/copy_ref\/{root}\/{path}": {
+            "get": {
+                "summary": "Creates and returns a copy_ref to a file.",
+                "description": "Creates and returns a `copy_ref` to a file.\n\nThis reference string can be used to copy that file to another user's Dropbox by passing it in as the\n`from_copy_ref` parameter on [\/fileops\/copy](https:\/\/www.dropbox.com\/developers\/core\/docs#fileops-copy).\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "path",
+                        "description": "Root folder: `auto` - automatically determines the appropriate root folder using your app's permission\nlevel (recommended); `sandbox` - the codename for app folder level; `dropbox` - full dropbox access.\n"
+                    },
+                    {
+                        "name": "path",
+                        "in": "path",
+                        "description": "The path to the file or folder."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/shared_folders": {
+            "get": {
+                "summary": "Returns a list of all shared folders.",
+                "description": "Returns a list of all shared folders the authenticated user has access to.\n\nThis API call requires Full Dropbox or File type [permissions](https:\/\/www.dropbox.com\/developers\/reference\/devguide#app-permissions).\n\nNote that `same_team` is only present if the linked account is a member of a Dropbox for Business team,\nand `member_id` is only present when this endpoint is called by a Dropbox for Business app and the user\nis on that team.\n\nThe `membership` field only contains users who have joined the",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "include_membership",
+                        "in": "query",
+                        "description": "If `true`, metadata for a shared folder will include a list of members and a list of groups."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/shared_folders\/{shared_folder_id}": {
+            "get": {
+                "summary": "Returns metadata about a specific shared folder.",
+                "description": "Returns metadata about a specific shared folder.\n\nThis API call requires Full Dropbox or File type [permissions](https:\/\/www.dropbox.com\/developers\/reference\/devguide#app-permissions).\n\nNote that `same_team` is only present if the linked account is a member of a Dropbox for Business team,\nand `member_id` is only present when this endpoint is called by a Dropbox for Business app and the user\nis on that team.\n\nThe `membership` field only contains users who have joined the shared folder and does no",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "shared_folder_id",
+                        "in": "path",
+                        "description": "The ID of a specific shared folder."
+                    },
+                    {
+                        "name": "include_membership",
+                        "in": "query",
+                        "description": "If `true`, metadata for a shared folder will include a list of members and a list of groups."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/save_url\/{root}\/{path}": {
+            "post": {
+                "summary": "Save a file from the specified URL into Dropbox.",
+                "description": "Save a file from the specified URL into Dropbox.\n\nIf the given path already exists, the file will be renamed to avoid the conflict (e.g. `myfile (1).txt`).\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "path",
+                        "description": "Root folder: `auto` - automatically determines the appropriate root folder using your app's permission\nlevel (recommended); `sandbox` - the codename for app folder level; `dropbox` - full dropbox access.\n"
+                    },
+                    {
+                        "name": "path",
+                        "in": "path",
+                        "description": "The path to the file or folder."
+                    },
+                    {
+                        "name": "url",
+                        "in": "formData",
+                        "description": "The URL to be fetched."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/save_url_job\/{job-id}": {
+            "get": {
+                "summary": "Check the status of a save URL job.",
+                "description": "Check the status of a [save URL](https:\/\/www.dropbox.com\/developers\/core\/docs#save-url) job.\n\nStatus field may have one of the following values:\n  * `PENDING` \u2013 The job has not yet started.\n  * `DOWNLOADING` \u2013 The job has started but hasn't yet completed.\n  * `COMPLETE` \u2013 The job is complete.\n  * `FAILED` \u2013 The job failed. An additional `error` field will describe the failure.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "job-id",
+                        "in": "path",
+                        "description": "A job ID returned from [\/save_url](https:\/\/www.dropbox.com\/developers\/core\/docs#save-url)."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/fileops\/copy": {
+            "post": {
+                "summary": "Copies a file or folder to a new location.",
+                "description": "Copies a file or folder to a new location.",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "formData",
+                        "description": "The root relative to which `from_path` and `to_path` are specified. Valid values are `auto` (recommended),\n`sandbox`, and `dropbox`.\n"
+                    },
+                    {
+                        "name": "from_path",
+                        "in": "formData",
+                        "description": "Specifies the file or folder to be copied from relative to `root`."
+                    },
+                    {
+                        "name": "to_path",
+                        "in": "formData",
+                        "description": "Specifies the destination path, *including the new name for the file or folder*, relative to `root`."
+                    },
+                    {
+                        "name": "locale",
+                        "in": "formData",
+                        "description": "The metadata returned will have its `size` field translated based on the given `locale`. For more\ninformation see [locale notes](https:\/\/www.dropbox.com\/developers\/core\/docs#param.locale).\n"
+                    },
+                    {
+                        "name": "from_copy_ref",
+                        "in": "formData",
+                        "description": "Specifies a `copy_ref` generated from a previous [\/copy_ref](https:\/\/www.dropbox.com\/developers\/core\/docs#copy_ref)\ncall. Must be used instead of the `from_path` parameter.\n"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/fileops\/create_folder": {
+            "post": {
+                "summary": "Creates a folder.",
+                "description": "Creates a folder.",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "formData",
+                        "description": "The root relative to which `from_path` and `to_path` are specified. Valid values are `auto` (recommended),\n`sandbox`, and `dropbox`.\n"
+                    },
+                    {
+                        "name": "path",
+                        "in": "formData",
+                        "description": "The path to the new folder to create relative to `root`."
+                    },
+                    {
+                        "name": "locale",
+                        "in": "formData",
+                        "description": "The metadata returned will have its `size` field translated based on the given `locale`. For more\ninformation see [locale notes](https:\/\/www.dropbox.com\/developers\/core\/docs#param.locale).\n"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/fileops\/delete": {
+            "post": {
+                "summary": "Deletes a file or folder.",
+                "description": "Deletes a file or folder.",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "formData",
+                        "description": "The root relative to which `from_path` and `to_path` are specified. Valid values are `auto` (recommended),\n`sandbox`, and `dropbox`.\n"
+                    },
+                    {
+                        "name": "path",
+                        "in": "formData",
+                        "description": "The path to the new folder to create relative to `root`."
+                    },
+                    {
+                        "name": "locale",
+                        "in": "formData",
+                        "description": "The metadata returned will have its `size` field translated based on the given `locale`. For more\ninformation see [locale notes](https:\/\/www.dropbox.com\/developers\/core\/docs#param.locale).\n"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/fileops\/move": {
+            "post": {
+                "summary": "Moves a file or folder to a new location.",
+                "description": "Moves a file or folder to a new location.",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "root",
+                        "in": "formData",
+                        "description": "The root relative to which `from_path` and `to_path` are specified. Valid values are `auto` (recommended),\n`sandbox`, and `dropbox`.\n"
+                    },
+                    {
+                        "name": "from_path",
+                        "in": "formData",
+                        "description": "Specifies the file or folder to be copied from relative to `root`."
+                    },
+                    {
+                        "name": "to_path",
+                        "in": "formData",
+                        "description": "Specifies the destination path, *including the new name for the file or folder*, relative to `root`."
+                    },
+                    {
+                        "name": "locale",
+                        "in": "formData",
+                        "description": "The metadata returned will have its `size` field translated based on the given `locale`. For more\ninformation see [locale notes](https:\/\/www.dropbox.com\/developers\/core\/docs#param.locale).\n"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OAuth 2 token response.",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/OAuth2Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ErrorMessage": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "description": "Error description",
+                        "type": "string"
+                    }
+                }
+            },
+            "OAuth2Token": {
+                "type": "object",
+                "properties": {
+                    "access_token": {
+                        "description": "OAuth 2 access token",
+                        "type": "string"
+                    },
+                    "token_type": {
+                        "description": "Token type; the token type will always be \"bearer\"",
+                        "type": "string"
+                    }
+                }
+            },
+            "UserAccountInfo": {
+                "type": "object",
+                "properties": {
+                    "uid": {
+                        "description": "The user's unique Dropbox ID",
+                        "type": "integer"
+                    },
+                    "display_name": {
+                        "description": "The user's display name",
+                        "type": "string"
+                    },
+                    "name_details": {
+                        "description": "The user's name details",
+                        "type": ""
+                    },
+                    "referral_link": {
+                        "description": "The user's [referral link](https:\/\/www.dropbox.com\/referrals)",
+                        "type": "string"
+                    },
+                    "country": {
+                        "description": "The user's two-letter country code, if available",
+                        "type": "string"
+                    },
+                    "locale": {
+                        "description": "Locale preference set by the user (e.g. en-us)",
+                        "type": "string"
+                    },
+                    "is_paired": {
+                        "description": "If `true`, there is a paired account associated with this user",
+                        "type": "boolean"
+                    },
+                    "team": {
+                        "description": "If the user belongs to a team, contains team information; otherwise, `null`",
+                        "type": ""
+                    },
+                    "quota_info": {
+                        "description": "The user's quota information",
+                        "type": ""
+                    }
+                }
+            },
+            "name_details": {
+                "type": "object"
+            },
+            "team": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "The name of the team the user belongs to",
+                        "type": "string"
+                    },
+                    "team_id": {
+                        "description": "The ID of the team the user belongs to",
+                        "type": "string"
+                    }
+                }
+            },
+            "quota_info": {
+                "type": "object"
+            },
+            "NameDetails": {
+                "type": "object",
+                "properties": {
+                    "familiar_name": {
+                        "description": "The locale-dependent familiar name for the user",
+                        "type": "string"
+                    },
+                    "given_name": {
+                        "description": "The user's given name",
+                        "type": "string"
+                    },
+                    "surname": {
+                        "description": "The user's surname",
+                        "type": "string"
+                    }
+                }
+            },
+            "QuotaInfo": {
+                "type": "object",
+                "properties": {
+                    "shared": {
+                        "description": "The user's used quota in shared folders (bytes); if the user belongs to a team, this includes all usage\ncontributed to the team's quota outside of the user's own used quota (bytes)\n",
+                        "type": "integer"
+                    },
+                    "quota": {
+                        "description": "The user's total quota allocation (bytes); if the user belongs to a team, the team's total quota\nallocation (bytes)\n",
+                        "type": "integer"
+                    },
+                    "normal": {
+                        "description": "The user's used quota outside of shared folders (bytes)",
+                        "type": "integer"
+                    }
+                }
+            },
+            "ResourceMetadata": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "A human-readable description of the file size (translated by [locale](https:\/\/www.dropbox.com\/developers\/core\/docs#param.locale))",
+                        "type": "string"
+                    },
+                    "bytes": {
+                        "description": "The file size in bytes",
+                        "type": "integer"
+                    },
+                    "path": {
+                        "description": "Returns the canonical path to the file or folder",
+                        "type": "string"
+                    },
+                    "is_dir": {
+                        "description": "Whether the given entry is a folder or not",
+                        "type": "boolean"
+                    },
+                    "is_deleted": {
+                        "description": "Whether the given entry is deleted (only included if deleted files are being returned)",
+                        "type": "boolean"
+                    },
+                    "rev": {
+                        "description": "A unique identifier for the current revision of a file; this field is the same `rev` as elsewhere in\nthe API and can be used to detect changes and avoid conflicts.\n",
+                        "type": "string"
+                    },
+                    "hash": {
+                        "description": "A folder's `hash` is useful for indicating changes to the folder's contents in later calls to\n[\/metadata](https:\/\/www.dropbox.com\/developers\/core\/docs#metadata); this is roughly the folder equivalent\nto a file's `rev`\n",
+                        "type": "string"
+                    },
+                    "thumb_exists": {
+                        "description": "`true` if the file is an image that can be converted to a thumbnail via the\n[\/thumbnails](https:\/\/www.dropbox.com\/developers\/core\/docs#thumbnails) call\n",
+                        "type": "boolean"
+                    },
+                    "photo_info": {
+                        "description": "Only returned when the `include_media_info` parameter is `true` and the file is an image",
+                        "type": ""
+                    },
+                    "video_info": {
+                        "description": "Only returned when the `include_media_info` parameter is `true` and the file is a video",
+                        "type": ""
+                    },
+                    "icon": {
+                        "description": "The name of the icon used to illustrate the file type in Dropbox's\n[icon library](https:\/\/www.dropbox.com\/static\/images\/dropbox-api-icons.zip)\n",
+                        "type": "string"
+                    },
+                    "mime_type": {
+                        "description": "MIME type of a file",
+                        "type": "string"
+                    },
+                    "modified": {
+                        "description": "The last time the file was modified on Dropbox, in the standard\n[date format](https:\/\/www.dropbox.com\/developers\/core\/docs#date-format) (not included for the root folder)\n",
+                        "type": "string"
+                    },
+                    "client_mtime": {
+                        "description": "For files, this is the modification time set by the desktop client when the file was added to Dropbox,\nin the standard [date format](https:\/\/www.dropbox.com\/developers\/core\/docs#date-format); since this time\nis not verified (the Dropbox server stores whatever the desktop client sends up), this should only be used\nfor display purposes (such as sorting) and not, for example, to determine if a file has changed or not\n",
+                        "type": "string"
+                    },
+                    "root": {
+                        "description": "The root or top-level folder depending on your [access level](https:\/\/www.dropbox.com\/developers\/reference\/devguide#app-permissions);\nall paths returned are relative to this root level; permitted values are either `dropbox` or `app_folder`\n",
+                        "type": "string"
+                    },
+                    "contents": {
+                        "description": "Collection of meta data about contents of this folder; if `list` is `false` the `contents` key will simply\nbe omitted from the result\n",
+                        "type": "array"
+                    },
+                    "revision": {
+                        "description": "A **deprecated** field that semi-uniquely identifies a file; use `rev` instead",
+                        "type": "integer"
+                    },
+                    "shared_folder": {
+                        "description": "This field will be included for shared folders; if the `include_membership` parameter is passed, there will\nadditionally be a `membership` field and a `groups` field.\n",
+                        "type": ""
+                    },
+                    "read_only": {
+                        "description": "For shared folders, this field specifies whether the user has read-only access to the folder; for files\nwithin a shared folder, this specifies the read-only status of the parent shared folder\n",
+                        "type": "boolean"
+                    },
+                    "parent_shared_folder_id": {
+                        "description": "For files within a shared folder, this field specifies the ID of the containing shared folder",
+                        "type": "string"
+                    },
+                    "modifier": {
+                        "description": "For files within a shared folder, this field specifies which user last modified this file; if the modifying\nuser no longer exists, the value will be `null`\n",
+                        "type": ""
+                    }
+                }
+            },
+            "photo_info": {
+                "type": "object"
+            },
+            "video_info": {
+                "type": "object"
+            },
+            "contents": {
+                "type": "array"
+            },
+            "shared_folder": {
+                "type": "object"
+            },
+            "modifier": {
+                "type": "object"
+            },
+            "ResourceShortMetadata": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "A human-readable description of the file size (translated by [locale](https:\/\/www.dropbox.com\/developers\/core\/docs#param.locale))",
+                        "type": "string"
+                    },
+                    "bytes": {
+                        "description": "The file size in bytes",
+                        "type": "integer"
+                    },
+                    "path": {
+                        "description": "Returns the canonical path to the file or folder",
+                        "type": "string"
+                    },
+                    "is_dir": {
+                        "description": "Whether the given entry is a folder or not",
+                        "type": "boolean"
+                    },
+                    "is_deleted": {
+                        "description": "Whether the given entry is deleted (only included if deleted files are being returned)",
+                        "type": "boolean"
+                    },
+                    "rev": {
+                        "description": "A unique identifier for the current revision of a file; this field is the same `rev` as elsewhere in\nthe API and can be used to detect changes and avoid conflicts.\n",
+                        "type": "string"
+                    },
+                    "hash": {
+                        "description": "A folder's `hash` is useful for indicating changes to the folder's contents in later calls to\n[\/metadata](https:\/\/www.dropbox.com\/developers\/core\/docs#metadata); this is roughly the folder equivalent\nto a file's `rev`\n",
+                        "type": "string"
+                    },
+                    "thumb_exists": {
+                        "description": "`true` if the file is an image that can be converted to a thumbnail via the\n[\/thumbnails](https:\/\/www.dropbox.com\/developers\/core\/docs#thumbnails) call\n",
+                        "type": "boolean"
+                    },
+                    "icon": {
+                        "description": "The name of the icon used to illustrate the file type in Dropbox's\n[icon library](https:\/\/www.dropbox.com\/static\/images\/dropbox-api-icons.zip)\n",
+                        "type": "string"
+                    },
+                    "mime_type": {
+                        "description": "MIME type of a file",
+                        "type": "string"
+                    },
+                    "modified": {
+                        "description": "The last time the file was modified on Dropbox, in the standard\n[date format](https:\/\/www.dropbox.com\/developers\/core\/docs#date-format) (not included for the root folder)\n",
+                        "type": "string"
+                    },
+                    "root": {
+                        "description": "The root or top-level folder depending on your [access level](https:\/\/www.dropbox.com\/developers\/reference\/devguide#app-permissions);\nall paths returned are relative to this root level; permitted values are either `dropbox` or `app_folder`\n",
+                        "type": "string"
+                    },
+                    "revision": {
+                        "description": "A **deprecated** field that semi-uniquely identifies a file; use `rev` instead",
+                        "type": "integer"
+                    },
+                    "shared_folder": {
+                        "description": "This field will be included for shared folders; if the `include_membership` parameter is passed, there will\nadditionally be a `membership` field and a `groups` field.\n",
+                        "type": ""
+                    },
+                    "read_only": {
+                        "description": "For shared folders, this field specifies whether the user has read-only access to the folder; for files\nwithin a shared folder, this specifies the read-only status of the parent shared folder\n",
+                        "type": "boolean"
+                    },
+                    "parent_shared_folder_id": {
+                        "description": "For files within a shared folder, this field specifies the ID of the containing shared folder",
+                        "type": "string"
+                    }
+                }
+            },
+            "FileMetadata": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "description": "A human-readable description of the file size (translated by [locale](https:\/\/www.dropbox.com\/developers\/core\/docs#param.locale))",
+                        "type": "string"
+                    },
+                    "bytes": {
+                        "description": "The file size in bytes",
+                        "type": "integer"
+                    },
+                    "path": {
+                        "description": "Returns the canonical path to the file or folder",
+                        "type": "string"
+                    },
+                    "is_dir": {
+                        "description": "Whether the given entry is a folder or not",
+                        "type": "boolean"
+                    },
+                    "is_deleted": {
+                        "description": "Whether the given entry is deleted (only included if deleted files are being returned)",
+                        "type": "boolean"
+                    },
+                    "rev": {
+                        "description": "A unique identifier for the current revision of a file; this field is the same `rev` as elsewhere in\nthe API and can be used to detect changes and avoid conflicts.\n",
+                        "type": "string"
+                    },
+                    "thumb_exists": {
+                        "description": "`true` if the file is an image that can be converted to a thumbnail via the\n[\/thumbnails](https:\/\/www.dropbox.com\/developers\/core\/docs#thumbnails) call\n",
+                        "type": "boolean"
+                    },
+                    "icon": {
+                        "description": "The name of the icon used to illustrate the file type in Dropbox's\n[icon library](https:\/\/www.dropbox.com\/static\/images\/dropbox-api-icons.zip)\n",
+                        "type": "string"
+                    },
+                    "mime_type": {
+                        "description": "MIME type of a file",
+                        "type": "string"
+                    },
+                    "modified": {
+                        "description": "The last time the file was modified on Dropbox, in the standard\n[date format](https:\/\/www.dropbox.com\/developers\/core\/docs#date-format) (not included for the root folder)\n",
+                        "type": "string"
+                    },
+                    "root": {
+                        "description": "The root or top-level folder depending on your [access level](https:\/\/www.dropbox.com\/developers\/reference\/devguide#app-permissions);\nall paths returned are relative to this root level; permitted values are either `dropbox` or `app_folder`\n",
+                        "type": "string"
+                    },
+                    "revision": {
+                        "description": "A **deprecated** field that semi-uniquely identifies a file; use `rev` instead",
+                        "type": "integer"
+                    }
+                }
+            },
+            "PhotoInfo": {
+                "type": "object",
+                "properties": {
+                    "time_taken": {
+                        "description": "Photo creation [time](https:\/\/www.dropbox.com\/developers\/core\/docs#date-format)",
+                        "type": "string"
+                    },
+                    "lat_long": {
+                        "description": "GPS coordinates - [latitude, longitude]",
+                        "type": "array"
+                    }
+                }
+            },
+            "lat_long": {
+                "type": "array"
+            },
+            "VideoInfo": {
+                "type": "object",
+                "properties": {
+                    "time_taken": {
+                        "description": "Photo creation [time](https:\/\/www.dropbox.com\/developers\/core\/docs#date-format)",
+                        "type": "string"
+                    },
+                    "lat_long": {
+                        "description": "GPS coordinates - [latitude, longitude]",
+                        "type": "array"
+                    },
+                    "duration": {
+                        "description": "Length of the video in milliseconds",
+                        "type": "integer"
+                    }
+                }
+            },
+            "SharedFolderInfo": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "ID of the shared folder",
+                        "type": "string"
+                    },
+                    "groups": {
+                        "description": "??? Group names (documentation is not detailed enough)",
+                        "type": "array"
+                    },
+                    "membership": {
+                        "description": "Members who have access to this folder",
+                        "type": "array"
+                    }
+                }
+            },
+            "groups": {
+                "type": "array"
+            },
+            "membership": {
+                "type": "array"
+            },
+            "MembershipInfo": {
+                "type": "object",
+                "properties": {
+                    "user": {
+                        "description": "Short description of a user",
+                        "type": ""
+                    },
+                    "access_type": {
+                        "description": "Member access type; e.g. \"owner\", \"editor\", etc. (TODO find out all possible values)",
+                        "type": "string"
+                    },
+                    "active": {
+                        "description": "Indicates whether membership is active or not",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "user": {
+                "type": "object"
+            },
+            "MembershipUser": {
+                "type": "object",
+                "properties": {
+                    "uid": {
+                        "description": "The user's unique Dropbox ID",
+                        "type": "integer"
+                    },
+                    "display_name": {
+                        "description": "The user's display name",
+                        "type": "string"
+                    },
+                    "same_team": {
+                        "description": "Indicates whether the user is on the same team as the linked account",
+                        "type": "boolean"
+                    },
+                    "member_id": {
+                        "description": "The member ID of the user",
+                        "type": "string"
+                    }
+                }
+            },
+            "DeltaResult": {
+                "type": "object",
+                "properties": {
+                    "reset": {
+                        "description": "If `true`, clear your local state before processing the delta entries. `reset` is always `true` on the\ninitial call to `\/delta` (i.e. when no `cursor` is passed in); otherwise, it is `true` in rare situations,\nsuch as after server or account maintenance, or if a user deletes their app folder\n",
+                        "type": "boolean"
+                    },
+                    "cursor": {
+                        "description": "A string that encodes the latest information that has been returned; on the next call to `\/delta`, pass in\nthis value\n",
+                        "type": "string"
+                    },
+                    "has_more": {
+                        "description": "If `true`, then there are more entries available; you can call `\/delta` again immediately to retrieve those\nentries; if `false`, then wait for at least five minutes (preferably longer) before checking again\n",
+                        "type": "boolean"
+                    },
+                    "entries": {
+                        "description": "A list of \"delta entries\"; each delta entry is a 2-item list, where first item is resource path and second\nitem holds resource metadata or `null` if the resource is deleted - `[ <path>, <metadata> ]`, or\n`[ <path>, null ]`\n",
+                        "type": "array"
+                    }
+                }
+            },
+            "entries": {
+                "type": "array"
+            },
+            "DeltaEntry": {
+                "type": "array"
+            },
+            "CursorInfo": {
+                "type": "object",
+                "properties": {
+                    "cursor": {
+                        "description": "A string that encodes the latest information that has been returned; on the next call to `\/delta`, pass in\nthis value\n",
+                        "type": "string"
+                    }
+                }
+            },
+            "Revisions": {
+                "type": "object"
+            },
+            "SearchResult": {
+                "type": "object"
+            },
+            "SharedLinkResult": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "description": "Actual shared link URL",
+                        "type": "string"
+                    },
+                    "expires": {
+                        "description": "Link's expiration date in Dropbox's usual [date format](https:\/\/www.dropbox.com\/developers\/core\/docs#date-format)",
+                        "type": "string"
+                    },
+                    "visibility": {
+                        "description": "Indicates what (if any) restrictions are set on this particular link",
+                        "type": "string"
+                    }
+                }
+            },
+            "MediaLinkResult": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "description": "Actual shared link URL",
+                        "type": "string"
+                    },
+                    "expires": {
+                        "description": "Link's expiration date in Dropbox's usual [date format](https:\/\/www.dropbox.com\/developers\/core\/docs#date-format)",
+                        "type": "string"
+                    }
+                }
+            },
+            "CopyRefResult": {
+                "type": "object",
+                "properties": {
+                    "copy_ref": {
+                        "description": "Copy reference to the specified file",
+                        "type": "string"
+                    },
+                    "expires": {
+                        "description": "Link's expiration date in Dropbox's usual [date format](https:\/\/www.dropbox.com\/developers\/core\/docs#date-format)",
+                        "type": "string"
+                    }
+                }
+            },
+            "SharedFolderMetadata": {
+                "type": "object",
+                "properties": {
+                    "shared_folder_id": {
+                        "description": "ID of the shared folder",
+                        "type": "string"
+                    },
+                    "shared_folder_name": {
+                        "description": "Shared folder name",
+                        "type": "string"
+                    },
+                    "path": {
+                        "description": "Returns the canonical path to the file or folder",
+                        "type": "string"
+                    },
+                    "access_type": {
+                        "description": "Member access type; e.g. \"owner\", \"editor\", etc. (TODO find out all possible values)",
+                        "type": "string"
+                    },
+                    "shared_link_policy": {
+                        "description": "Shared link policy; e.g. \"all\", etc. (TODO find out all possible values)",
+                        "type": "string"
+                    },
+                    "MembershipUser": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "owner": {
+                        "description": "Owner of this shared folder",
+                        "type": ""
+                    },
+                    "groups": {
+                        "description": "??? Group names (documentation is not detailed enough)",
+                        "type": "array"
+                    },
+                    "membership": {
+                        "description": "Members who have access to this folder",
+                        "type": "array"
+                    }
+                }
+            },
+            "SharedFolders": {
+                "type": "object"
+            },
+            "JobResult": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "description": "Job status",
+                        "type": "string"
+                    },
+                    "job": {
+                        "description": "Job ID to check the job's status",
+                        "type": "string"
+                    }
+                }
+            },
+            "JobStatus": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "description": "Job status",
+                        "type": "string"
+                    },
+                    "error": {
+                        "description": "Error description",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
