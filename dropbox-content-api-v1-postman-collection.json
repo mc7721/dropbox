@@ -1,5 +1,5 @@
 {
-    "id": "766b7b558c2137a90c8c83f646d2664d",
+    "id": "315eef850227c40ef65a1059cd93bbde",
     "name": "Dropbox Content API v1",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "c4ecc3a01a53f178e3ff6a811134c7e7",
+            "id": "e6839aba931689e670f2ca4e8912aba3",
             "name": "Downloads a file.",
             "url": "httpsapi-content.dropbox.com\/1\/files\/{root}\/{path}",
             "description": "Downloads a file.\n\nThis method also supports [HTTP Range Retrieval Requests](http:\/\/www.w3.org\/Protocols\/rfc2616\/rfc2616-sec14.html#sec14.35.2)\nto allow retrieving partial file contents.\n",
@@ -51,11 +51,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "766b7b558c2137a90c8c83f646d2664d",
+            "collectionId": "315eef850227c40ef65a1059cd93bbde",
             "rawModeData": ""
         },
         {
-            "id": "9fc1ab59658010f3063518f33267bda1",
+            "id": "13e3cd705d9457b8ef9b103708c5fa0f",
             "name": "Uploads a file using PUT semantics.",
             "url": "httpsapi-content.dropbox.com\/1\/files_put\/{root}\/{path}",
             "description": "Uploads a file using PUT semantics.\n\nThe preferred HTTP method for this call is **PUT**. For compatibility with browser environments, the **POST**\nHTTP method is also recognized.\n\n**Note:** Providing a `Content-Length` header set to the size of the uploaded file is required so that the\nserver can verify that it has received the entire file contents.\n\n**Note:** `\/files_put` has a maximum file size limit of 150 MB and does not support uploads with chunked\nencoding. To upload larger files, use [\/ch",
@@ -124,11 +124,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "766b7b558c2137a90c8c83f646d2664d",
+            "collectionId": "315eef850227c40ef65a1059cd93bbde",
             "rawModeData": ""
         },
         {
-            "id": "7757cf843fb8ad866f118fd372dc0919",
+            "id": "c8929b33a86daf27a26abb95f48c2cec",
             "name": "Uploads a file using PUT semantics.",
             "url": "httpsapi-content.dropbox.com\/1\/files_put\/{root}\/{path}",
             "description": "Uploads a file using PUT semantics.\n\nThe preferred HTTP method for this call is **PUT**. For compatibility with browser environments, the **POST**\nHTTP method is also recognized.\n\n**Note:** Providing a `Content-Length` header set to the size of the uploaded file is required so that the\nserver can verify that it has received the entire file contents.\n\n**Note:** `\/files_put` has a maximum file size limit of 150 MB and does not support uploads with chunked\nencoding. To upload larger files, use [\/ch",
@@ -197,11 +197,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "766b7b558c2137a90c8c83f646d2664d",
+            "collectionId": "315eef850227c40ef65a1059cd93bbde",
             "rawModeData": ""
         },
         {
-            "id": "3dd08e4a1ba599e84bacdeb45925355f",
+            "id": "9089ec5a508fa14fa060326cd9368026",
             "name": "Gets a thumbnail for an image.",
             "url": "httpsapi-content.dropbox.com\/1\/thumbnails\/{root}\/{path}",
             "description": "Gets a thumbnail for an image.\n\nThis method currently supports files with the following file extensions: .jpg, .jpeg, .png, .tiff, .tif, .gif, .bmp\n\nPhotos that are larger than 20MB in size won't be converted to a thumbnail.\n",
@@ -249,11 +249,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "766b7b558c2137a90c8c83f646d2664d",
+            "collectionId": "315eef850227c40ef65a1059cd93bbde",
             "rawModeData": ""
         },
         {
-            "id": "36131c2688bb32e8d130b199f7162983",
+            "id": "2f5ea4a233ab97d1e1ba67e3124a67dd",
             "name": "Gets a preview for a file.",
             "url": "httpsapi-content.dropbox.com\/1\/previews\/{root}\/{path}",
             "description": "Gets a preview for a file.\n\nPreviews are only generated for the files with the following extensions: .doc, .docx, .docm, .ppt, .pps,\n.ppsx, .ppsm, .pptx, .pptm, .xls, .xlsx, .xlsm, .rtf\n",
@@ -294,11 +294,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "766b7b558c2137a90c8c83f646d2664d",
+            "collectionId": "315eef850227c40ef65a1059cd93bbde",
             "rawModeData": ""
         },
         {
-            "id": "4fdae6f14d8d215ff350f6b9b3557577",
+            "id": "9f6dffb21a6eaaa6c5ad5c27540a4a88",
             "name": "Uploads large files to Dropbox in multiple chunks.",
             "url": "httpsapi-content.dropbox.com\/1\/chunked_upload",
             "description": "Uploads large files to Dropbox in multiple chunks. Also has the ability to resume if the upload is interrupted.\nThis allows for uploads larger than the `\/files_put` maximum of 150 MB.\n\nTypical usage:\n  1. Send a PUT request to `\/chunked_upload` with the first chunk of the file without setting `upload_id`, and\n  receive an `upload_id` in return.\n  2. Repeatedly `PUT` subsequent chunks using the `upload_id` to identify the upload in progress and an `offset`\n  representing the number of bytes trans",
@@ -339,11 +339,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "766b7b558c2137a90c8c83f646d2664d",
+            "collectionId": "315eef850227c40ef65a1059cd93bbde",
             "rawModeData": ""
         },
         {
-            "id": "651aebd53e3dc8c526887bd3a1c9503d",
+            "id": "d06030d2c892dabe867f4a118c486b38",
             "name": "Completes an upload initiated by the chunked upload method.",
             "url": "httpsapi-content.dropbox.com\/1\/commit_chunked_upload\/{root}\/{path}",
             "description": "Completes an upload initiated by the `\/chunked_upload` method. Saves a file uploaded via `\/chunked_upload` to\na user's Dropbox.\n\n`\/commit_chunked_upload` is similar to `\/files_put`. The main difference is that while `\/files_put` takes the\nfile contents in the request body, `\/commit_chunked_upload` takes a parameter `upload_id`, which is obtained\nwhen the file contents are uploaded via `\/chunked_upload`.\n",
@@ -412,7 +412,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "766b7b558c2137a90c8c83f646d2664d",
+            "collectionId": "315eef850227c40ef65a1059cd93bbde",
             "rawModeData": ""
         }
     ]
