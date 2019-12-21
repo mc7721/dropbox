@@ -16,8 +16,8 @@
         "storage",
         "webhook implementations"
     ],
-    "created": "2019-12-19",
-    "modified": "2019-12-19",
+    "created": "2019-12-21",
+    "modified": "2019-12-21",
     "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/dropbox\/master\/apis.json",
     "specificationVersion": "0.14",
     "apis": [
@@ -31,11 +31,15 @@
             "properties": [
                 {
                     "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/dropbox-openapi.json"
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/dropbox\/master\/dropbox-openapi.json"
                 },
                 {
                     "type": "x-openapi",
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/dropbox.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/dropbox\/master\/dropbox-postman-collection.json"
                 }
             ]
         },
@@ -49,7 +53,11 @@
             "properties": [
                 {
                     "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/dropbox-for-business-api-openapi.json"
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/cloud-elements\/master\/dropbox-for-business-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/dropbox\/master\/dropbox-for-business-api-openapi.json"
                 },
                 {
                     "type": "x-openapi",
@@ -57,7 +65,11 @@
                 },
                 {
                     "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/dropbox-for-business-api-postman-collection.json"
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/dropbox\/master\/dropbox-for-business-api-postman-collection.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/cloud-elements\/master\/dropbox-for-business-api-postman-collection.json"
                 }
             ]
         },
@@ -71,11 +83,15 @@
             "properties": [
                 {
                     "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/dropbox-core-api-v1-openapi.json"
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/dropbox\/master\/dropbox-core-api-v1-openapi.json"
                 },
                 {
                     "type": "x-openapi",
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/dropbox-core-api-v1.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/dropbox\/master\/dropbox-core-api-v1-postman-collection.json"
                 }
             ]
         },
@@ -89,11 +105,15 @@
             "properties": [
                 {
                     "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/dropbox-content-api-v1-openapi.json"
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/dropbox\/master\/dropbox-content-api-v1-openapi.json"
                 },
                 {
                     "type": "x-openapi",
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/dropbox-content-api-v1.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/dropbox\/master\/dropbox-content-api-v1-postman-collection.json"
                 }
             ]
         },
@@ -107,17 +127,25 @@
             "properties": [
                 {
                     "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/dropbox-notify-appendix-api-v1-openapi.json"
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/dropbox\/master\/dropbox-notify-appendix-api-v1-openapi.json"
                 },
                 {
                     "type": "x-openapi",
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/dropbox-notify-appendix-api-v1.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/dropbox\/master\/dropbox-notify-appendix-api-v1-postman-collection.json"
                 }
             ]
         }
     ],
     "include": [],
     "x-common": [
+        {
+            "type": "APIs.json",
+            "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/apis.json"
+        },
         {
             "type": "Application Management",
             "url": "https:\/\/www.dropbox.com\/developers\/apps"
