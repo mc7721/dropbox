@@ -1,5 +1,5 @@
 {
-    "id": "cd5078d63456b19799332accaca519a1",
+    "id": "f1be00f106259b1fd1cee6caf0405d73",
     "name": "Dropbox Core API v1",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "5ad8d78e4bbdebbc05aab54740e48a0a",
+            "id": "b9106ea0610178596f316c3e07a4587b",
             "name": "Convert OAuth 1 token to OAuth 2 token.",
             "url": "http:\/\/api.dropbox.com\/1\/oauth2\/token_from_oauth1",
             "description": "This endpoint should be used by apps transitioning from OAuth 1 to OAuth 2. It will return an OAuth 2 token\nfor the authenticated user.\n",
@@ -29,11 +29,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "5c4eaeebb79d9d7ed99b40fa8609e125",
+            "id": "1bb868cdff30ee670f04614a3a2e647f",
             "name": "Disables the access token.",
             "url": "http:\/\/api.dropbox.com\/1\/disable_access_token",
             "description": "Disables the access token used to authenticate the call. This method works for OAuth 1 and OAuth 2 tokens.\n",
@@ -52,11 +52,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "50b009361ab099dd462bff53b87a289b",
+            "id": "ae9cd12ea609c1c475a90688623be7eb",
             "name": "Retrieves information about the user's account.",
             "url": "http:\/\/api.dropbox.com\/1\/account\/info",
             "description": "Retrieves information about the user's account.",
@@ -83,11 +83,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "759cc3c0cb1cebdd2c9480fde90010dd",
+            "id": "7814a1eff3c080c4b0910ef6925168a7",
             "name": "Retrieves file and folder metadata.",
             "url": "http:\/\/api.dropbox.com\/1\/metadata\/{root}\/{path}",
             "description": "Retrieves file and folder metadata.\n\n**Note:** `modified`, `rev`, and `revision` aren't returned in the metadata for the root\/top-level path.\n",
@@ -177,11 +177,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "ca6124a0971a2449c67bb81f376fd0e1",
+            "id": "427054c896c2fc920919a3e1dbfe61fe",
             "name": "A way of letting you keep up with changes to files and folders in a user's Dropbox.",
             "url": "http:\/\/api.dropbox.com\/1\/delta",
             "description": "A way of letting you keep up with changes to files and folders in a user's Dropbox.\n\nYou can periodically call `\/delta` to get a list of \"delta entries\", which are instructions on how to\nupdate your local state to match the server's state.\n\nIf you use the `path_prefix` parameter, you must continue to pass the correct prefix on subsequent calls\nusing the returned cursor. You can switch the `path_prefix` on any existing cursor to a descendant of the\nexisting `path_prefix` on subsequent calls to `\/",
@@ -229,11 +229,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "0cc9effb846767c1b7c3af4c7cf6b8bd",
+            "id": "f848a90fcc167e011414b391d6e151ca",
             "name": "A way to quickly get a cursor for the server's state, for use with \/delta.",
             "url": "http:\/\/api.dropbox.com\/1\/delta\/latest_cursor",
             "description": "A way to quickly get a cursor for the server's state, for use with `\/delta`.\n\nUnlike `\/delta`, `\/delta\/latest_cursor` does not return any entries, so your app will not know about any\nexisting files or folders in the Dropbox account. For example, if your app processes future delta entries\nand sees that a folder was deleted, your app won't know what files were in that folder. Use this endpoint\nif your app only needs to know about new files and modifications and doesn't need to know about files tha",
@@ -267,11 +267,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "5272c921ca2018bb1c631ca7b0c6c0ce",
+            "id": "355cf2f3db857a45eb780b7f1791d82f",
             "name": "Obtains metadata for all available revisions of a file, including the current revision.",
             "url": "http:\/\/api.dropbox.com\/1\/revisions\/{root}\/{path}",
             "description": "Obtains metadata for all available revisions of a file, including the current revision.\n\nOnly revisions up to thirty days old are available (or more if the Dropbox user has\n[Extended Version History](https:\/\/www.dropbox.com\/help\/113)). You can use the revision number in conjunction\nwith the `\/restore` call to revert the file to its previous state.\n",
@@ -319,11 +319,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "705e9a3a1a70246c940bd2129c162b31",
+            "id": "33ce20e9cd5ef48b32bf2060b33cff71",
             "name": "Restores a file path to a previous revision.",
             "url": "http:\/\/api.dropbox.com\/1\/restore\/{root}\/{path}",
             "description": "Restores a file path to a previous revision.\n\nUnlike downloading a file at a given revision and then re-uploading it, this call is atomic. It also saves\na bunch of bandwidth.\n",
@@ -371,11 +371,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "a4515addcf7f651845c2fda1dd90f480",
+            "id": "0e7914ed1dc3a07b8c974aaad3a379e5",
             "name": "Search for files and folders by name.",
             "url": "http:\/\/api.dropbox.com\/1\/search\/{root}\/{path}",
             "description": "Returns metadata for all files and folders whose filename contains the given search string as a substring.\n\nSearches are limited to the folder path and its sub-folder hierarchy provided in the call.\n\n**Note:** Recent changes may not immediately be reflected in search results due to a short delay in indexing.\n",
@@ -444,11 +444,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "0311bf51a91a459358b2f68bf212a53e",
+            "id": "4ea8d93b2326b0755af1aaa8ce7f4472",
             "name": "Search for files and folders by name.",
             "url": "http:\/\/api.dropbox.com\/1\/search\/{root}\/{path}",
             "description": "Returns metadata for all files and folders whose filename contains the given search string as a substring.\n\nSearches are limited to the folder path and its sub-folder hierarchy provided in the call.\n\n**Note:** Recent changes may not immediately be reflected in search results due to a short delay in indexing.\n",
@@ -517,11 +517,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "82f9fae94a73ea2d2b6a88353bfcf809",
+            "id": "1874134296022a51ae26c8a4317f4ae5",
             "name": "Creates and returns a shared link to a file or folder.",
             "url": "http:\/\/api.dropbox.com\/1\/shares\/{root}\/{path}",
             "description": "Creates and returns a [shared link](https:\/\/www.dropbox.com\/help\/167) to a file or folder.\n\nDropbox for Business users can set restrictions on shared links; the `visibility` field indicates what\n(if any) restrictions are set on this particular link. Possible values include:\n  * `PUBLIC` - anyone can view\n  * `TEAM_ONLY` - only the owner's team can view\n  * `PASSWORD` - a password is required\n  * `TEAM_AND_PASSWORD` - a combination of `TEAM_ONLY` and `PASSWORD` restrictions\n  * `SHARED_FOLDER_ONL",
@@ -569,11 +569,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "5ff1807339465400e1e8ba09b1e906eb",
+            "id": "cedff09639ad77f07ee7a992d90f3bc0",
             "name": "Returns a link directly to a file.",
             "url": "http:\/\/api.dropbox.com\/1\/media\/{root}\/{path}",
             "description": "Returns a link directly to a file.\n\nSimilar to [\/shares](https:\/\/www.dropbox.com\/developers\/core\/docs#shares). The difference is that this\nbypasses the Dropbox webserver, used to provide a preview of the file, so that you can effectively stream\nthe contents of your media. This URL should not be used to display content directly in the browser.\n\nThe `\/media` link expires after four hours, allotting enough time to stream files, but not enough to leave\na connection open indefinitely.\n",
@@ -614,11 +614,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "4b1479da08b463b644736a28710666ca",
+            "id": "f6b2cea5d8081c744b2f0f2dec7fcf38",
             "name": "Creates and returns a copy_ref to a file.",
             "url": "http:\/\/api.dropbox.com\/1\/copy_ref\/{root}\/{path}",
             "description": "Creates and returns a `copy_ref` to a file.\n\nThis reference string can be used to copy that file to another user's Dropbox by passing it in as the\n`from_copy_ref` parameter on [\/fileops\/copy](https:\/\/www.dropbox.com\/developers\/core\/docs#fileops-copy).\n",
@@ -652,11 +652,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "4ade998f62fc6050af9bf1a49c4bfaf0",
+            "id": "3847d6ce60e5c195ce5dd56a631a0a95",
             "name": "Returns a list of all shared folders.",
             "url": "http:\/\/api.dropbox.com\/1\/shared_folders",
             "description": "Returns a list of all shared folders the authenticated user has access to.\n\nThis API call requires Full Dropbox or File type [permissions](https:\/\/www.dropbox.com\/developers\/reference\/devguide#app-permissions).\n\nNote that `same_team` is only present if the linked account is a member of a Dropbox for Business team,\nand `member_id` is only present when this endpoint is called by a Dropbox for Business app and the user\nis on that team.\n\nThe `membership` field only contains users who have joined the",
@@ -683,11 +683,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "644efc72ada29f1444df8aa0b591e101",
+            "id": "ff7979cacef2350637b6de0011c9ba6f",
             "name": "Returns metadata about a specific shared folder.",
             "url": "http:\/\/api.dropbox.com\/1\/shared_folders\/{shared_folder_id}",
             "description": "Returns metadata about a specific shared folder.\n\nThis API call requires Full Dropbox or File type [permissions](https:\/\/www.dropbox.com\/developers\/reference\/devguide#app-permissions).\n\nNote that `same_team` is only present if the linked account is a member of a Dropbox for Business team,\nand `member_id` is only present when this endpoint is called by a Dropbox for Business app and the user\nis on that team.\n\nThe `membership` field only contains users who have joined the shared folder and does no",
@@ -721,11 +721,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "a49027cdd011d3f83c4fdf64626c6c40",
+            "id": "11f4f36199bf54900714aba7e992960b",
             "name": "Save a file from the specified URL into Dropbox.",
             "url": "http:\/\/api.dropbox.com\/1\/save_url\/{root}\/{path}",
             "description": "Save a file from the specified URL into Dropbox.\n\nIf the given path already exists, the file will be renamed to avoid the conflict (e.g. `myfile (1).txt`).\n",
@@ -766,11 +766,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "6ac71c839bfd39adb4586d195627e4b0",
+            "id": "a2d7680b65c9ec0e4982e7450a5aba07",
             "name": "Check the status of a save URL job.",
             "url": "http:\/\/api.dropbox.com\/1\/save_url_job\/{job-id}",
             "description": "Check the status of a [save URL](https:\/\/www.dropbox.com\/developers\/core\/docs#save-url) job.\n\nStatus field may have one of the following values:\n  * `PENDING` \u2013 The job has not yet started.\n  * `DOWNLOADING` \u2013 The job has started but hasn't yet completed.\n  * `COMPLETE` \u2013 The job is complete.\n  * `FAILED` \u2013 The job failed. An additional `error` field will describe the failure.\n",
@@ -797,11 +797,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "de3f53556b96d06ddf6beb8d2c6b2594",
+            "id": "2bd7de8e6bd8b0a52606dcdb42fc7fef",
             "name": "Copies a file or folder to a new location.",
             "url": "http:\/\/api.dropbox.com\/1\/fileops\/copy",
             "description": "Copies a file or folder to a new location.",
@@ -856,11 +856,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "e2d6f0c3d44b7317b108b0cd6dd9a169",
+            "id": "33a50aa19b6bc8a2c71fe333b3d04718",
             "name": "Creates a folder.",
             "url": "http:\/\/api.dropbox.com\/1\/fileops\/create_folder",
             "description": "Creates a folder.",
@@ -901,11 +901,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "e54930fcb1cf1e315b63f2561abcab82",
+            "id": "1227ae8934e1604cb6a1107ebff90a32",
             "name": "Deletes a file or folder.",
             "url": "http:\/\/api.dropbox.com\/1\/fileops\/delete",
             "description": "Deletes a file or folder.",
@@ -946,11 +946,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         },
         {
-            "id": "dc973d3bc361c3d5e88fd1046a6cfc2c",
+            "id": "95b92990379451c2b547c5f26286eb4a",
             "name": "Moves a file or folder to a new location.",
             "url": "http:\/\/api.dropbox.com\/1\/fileops\/move",
             "description": "Moves a file or folder to a new location.",
@@ -998,7 +998,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "cd5078d63456b19799332accaca519a1",
+            "collectionId": "f1be00f106259b1fd1cee6caf0405d73",
             "rawModeData": ""
         }
     ]
